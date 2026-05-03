@@ -7,12 +7,14 @@ function App() {
 
   useEffect(() => {
     const savedTodos = localStorage.getItem('todos');
+    console.log('Loaded from localStorage:', savedTodos);
     if (savedTodos) {
       setTodos(JSON.parse(savedTodos));
     }
   }, []);
 
   useEffect(() => {
+    console.log('Saving to localStorage:', todos);
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
@@ -40,7 +42,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Hany's Todo List App</h1>
+      <h1>Hany's Todo List</h1>
       <form onSubmit={handleSubmit} className="todo-form">
         <input
           type="text"
